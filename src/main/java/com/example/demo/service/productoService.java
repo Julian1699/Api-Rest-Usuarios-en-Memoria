@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Producto;
+import com.example.demo.entity.ProductoEntity;
 import com.example.demo.repository.productoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,32 +14,32 @@ public class productoService {
 
     private final productoRepository productoRepository;
 
-    public Producto saveProduct(Producto producto){
-        return productoRepository.save(producto);
+    public ProductoEntity saveProduct(ProductoEntity productoEntity){
+        return productoRepository.save(productoEntity);
     }
 
-    public Producto updateProduct(int id, Producto producto) {
+    public ProductoEntity updateProduct(int id, ProductoEntity productoEntity) {
 
-        Optional<Producto> productoId = productoRepository.findById(id);
+        Optional<ProductoEntity> productoId = productoRepository.findById(id);
 
-        Producto productoAct = productoId.get();
-        productoAct.setNombre(producto.getNombre());
-        productoAct.setReferencia(producto.getReferencia());
-        productoAct.setPrecio(producto.getPrecio());
-        productoAct.setPeso(producto.getPeso());
-        productoAct.setCategoria(producto.getCategoria());
-        productoAct.setStock(producto.getStock());
-        productoAct.setFecha(producto.getFecha());
+        ProductoEntity productoEntityAct = productoId.get();
+        productoEntityAct.setNombre(productoEntity.getNombre());
+        productoEntityAct.setReferencia(productoEntity.getReferencia());
+        productoEntityAct.setPrecio(productoEntity.getPrecio());
+        productoEntityAct.setPeso(productoEntity.getPeso());
+        productoEntityAct.setCategoria(productoEntity.getCategoria());
+        productoEntityAct.setStock(productoEntity.getStock());
+        productoEntityAct.setFecha(productoEntity.getFecha());
 
-        return productoRepository.save(productoAct);
+        return productoRepository.save(productoEntityAct);
 
     }
 
-    public List<Producto> getAllProducts (){
+    public List<ProductoEntity> getAllProducts (){
         return productoRepository.findAll();
     }
 
-    public Optional<Producto> findById(int id){
+    public Optional<ProductoEntity> findById(int id){
         return productoRepository.findById(id);
     }
 

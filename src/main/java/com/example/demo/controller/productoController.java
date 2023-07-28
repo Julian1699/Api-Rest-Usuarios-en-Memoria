@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Producto;
+import com.example.demo.entity.ProductoEntity;
 import com.example.demo.service.productoService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -15,16 +15,16 @@ public class productoController {
 
     private final productoService productoService;
     @GetMapping
-    public List<Producto> listarProductos (){
+    public List<ProductoEntity> listarProductos (){
         return productoService.getAllProducts();
     }
     @PostMapping
-    public Producto guardarProducto(@RequestBody Producto producto){
-        return productoService.saveProduct(producto);
+    public ProductoEntity guardarProducto(@RequestBody ProductoEntity productoEntity){
+        return productoService.saveProduct(productoEntity);
     }
     @PutMapping("/act/{id}")
-    public Producto actualizarProducto(@PathVariable int id, @RequestBody Producto producto){
-        return productoService.updateProduct(id, producto);
+    public ProductoEntity actualizarProducto(@PathVariable int id, @RequestBody ProductoEntity productoEntity){
+        return productoService.updateProduct(id, productoEntity);
     }
     @DeleteMapping("/{id}")
     public void eliminarProducto(@PathVariable int id){
